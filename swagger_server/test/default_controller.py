@@ -23,7 +23,7 @@ def add_student(body):  # noqa: E501
 
 def delete_student(student_id):  # noqa: E501
     """delete_student
-
+#add delete student
      # noqa: E501
 
     :param student_id: ID of student to return
