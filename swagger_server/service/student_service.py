@@ -16,6 +16,10 @@ student_db = TinyDB(db_file_path)
 
 
 def add_student(student):
+    if student.last_name == None:
+        return  'not allowed',405
+    if student.first_name == None:
+        return  'not allowed',405
     queries = []
     query = Query()
     queries.append(query.first_name == student.first_name)
@@ -27,6 +31,7 @@ def add_student(student):
 
     doc_id = student_db.insert(student.to_dict())
     student.student_id = doc_id
+
     return student.student_id
 
 '''
