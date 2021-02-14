@@ -29,14 +29,24 @@ def add_student(student):
     student.student_id = doc_id
     return student.student_id
 
-
+'''
 def get_student_by_id(student_id, subject):
-    student = student_db.get(doc_id=int(student_id))
+    student = student_db.get(doc_id=int(student_id)) 
     if not student:
         return student
     student = Student.from_dict(student)
     if not subject:
         return student
+'''
+
+def get_student_by_id(student_id, subject):
+    student = student_db.get(doc_id=int(student_id)) 
+    if not student:
+        return student
+    student = Student.from_dict(student)
+    if not subject:
+        return student
+    
 
 
 def delete_student(student_id):
@@ -45,3 +55,31 @@ def delete_student(student_id):
         return student
     student_db.remove(doc_ids=[int(student_id)])
     return student_id
+	
+	
+	
+#new stuff 	or function 	
+def get_student_by_id_and_subject(student_id, subject):
+#test 4 find student by subject and id 
+    student = student_db.get(doc_id=int(student_id))
+    print(student)
+    if not student: 
+        return student
+
+    student = Student.from_dict(student)
+    
+    if subject in student.grades:
+        return student
+    else:
+        return None
+
+	
+def get_student_by_last_name(last_name):
+#function for student add last name 
+    query = Query()
+    student = student_db.get(query.last_name == last_name)
+    print(student)
+    if not student: 
+        return student
+    student = Student.from_dict(student)
+    return student

@@ -37,6 +37,30 @@ paths:
         "409":
           description: "already exists"
       x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /student/:    
+    get:
+      summary: "Find student by Last name"
+      description: "Returns a single student"
+      operationId: "get_student_by_last_name"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "last_name"
+        in: "query"
+        description: "The last_name"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Student"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "student not found"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"  
   /student/{student_id}:
     get:
       summary: "Find student by ID"
@@ -66,7 +90,7 @@ paths:
           description: "Invalid ID supplied"
         "404":
           description: "student not found"
-      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"  
     delete:
       description: ""
       operationId: "delete_student"
